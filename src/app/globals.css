@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: #f4f7fb;
+}
+
+body {
+  position: relative;
+  color: #0f172a;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(59, 130, 246, 0.08), transparent 38%),
+    radial-gradient(circle at 82% 88%, rgba(16, 185, 129, 0.08), transparent 42%),
+    linear-gradient(180deg, #f4f7fb 0%, #eef3f8 100%);
+}
+
+/* Hero: optional video + dark tint + slow animated gradient (main visual) */
+.nf-hero-video {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.17;
+  filter: blur(4px) brightness(0.45) saturate(0.85);
+  pointer-events: none;
+}
+
+.nf-hero-video-tint {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.78);
+  pointer-events: none;
+}
+
+.nf-hero-bg-animated {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #020617 0%,
+    #0f172a 22%,
+    #132a3a 40%,
+    #064e3b 58%,
+    #022c22 78%,
+    #020617 100%
+  );
+  background-size: 300% 300%;
+  animation: heroGradientMove 16s ease-in-out infinite;
+  opacity: 0.94;
+  pointer-events: none;
+}
+
+.nf-hero-bottom-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(244, 247, 251, 0) 70%,
+    rgba(244, 247, 251, 0.9) 92%,
+    #f4f7fb 100%
+  );
+  pointer-events: none;
+}
+
+@keyframes heroGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* One extra section: features — ambient blobs only */
+.nf-features-blob-a {
+  position: absolute;
+  left: -12%;
+  top: 15%;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 9999px;
+  background: rgba(59, 130, 246, 0.11);
+  filter: blur(56px);
+  animation: nf-float-soft 28s ease-in-out infinite;
+}
+
+.nf-features-blob-b {
+  position: absolute;
+  right: -10%;
+  bottom: 5%;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.09);
+  filter: blur(52px);
+  animation: nf-float-soft 22s ease-in-out infinite reverse;
+}
+
+@keyframes nf-float-soft {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(16px, -20px) scale(1.06);
+    opacity: 0.75;
+  }
+}
+
+.nf-reveal.nf-reveal-visible {
+  transition-delay: 0ms;
+}
+
+.nf-card-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nf-card-lift:hover {
+  transform: translateY(-4px);
+}
+
+.nf-btn-motion {
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nf-badge-motion {
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nf-float-slow {
+  animation: nf-card-float 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-hero-bg-animated {
+    animation: none !important;
+    background-position: 50% 50% !important;
+  }
+
+  .nf-hero-video {
+    opacity: 0 !important;
+    visibility: hidden;
+  }
+
+  .nf-features-blob-a,
+  .nf-features-blob-b,
+  .nf-float-slow {
+    animation: none !important;
+  }
+
+  .nf-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .nf-card-lift:hover {
+    transform: none !important;
+  }
+}
+
+@keyframes nf-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nf-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes nf-soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes nf-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 120% 50%;
+  }
+}
+
+@keyframes dashboardShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+.nf-dashboard-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(16, 185, 129, 0.22),
+    rgba(99, 102, 241, 0.2),
+    rgba(59, 130, 246, 0.2)
+  );
+  background-size: 220% 100%;
+  animation: dashboardShimmer 2.6s linear infinite;
+}
+
+.nf-section-about {
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.1), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.1), transparent 42%),
+    linear-gradient(135deg, #ffffff, #f4f6f8);
+}
+
+@keyframes nf-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
