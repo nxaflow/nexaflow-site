@@ -20,6 +20,7 @@ function TypingDots({ align = "left" }) {
 
 function Bubble({ role, text, time }) {
   const isUser = role === "user";
+
   return (
     <div className={cx("flex", isUser ? "justify-end" : "justify-start")}>
       <div
@@ -28,7 +29,7 @@ function Bubble({ role, text, time }) {
           "animate-[nf-fade-up_420ms_ease-out_both]",
           isUser
             ? "bg-emerald-600 text-white"
-            : "border border-slate-200 bg-white text-slate-800"
+            : "border border-slate-200 bg-white text-slate-800",
         )}
       >
         <div className="whitespace-pre-wrap">{text}</div>
@@ -79,57 +80,20 @@ function PhoneFrame({ children }) {
   );
 }
 
-function StatusToast({ title, detail, tone = "emerald" }) {
-  const toneClasses =
-    tone === "emerald"
-      ? "border-emerald-100 bg-white/80"
-      : tone === "slate"
-        ? "border-slate-200 bg-white/80"
-        : "border-sky-100 bg-white/80";
-
-  return (
-    <div
-      className={cx(
-        "rounded-2xl border p-4 shadow-lg backdrop-blur",
-        "animate-[nf-float-in_460ms_ease-out_both]",
-        toneClasses
-      )}
-    >
-      <div className="text-sm font-semibold text-slate-950">{title}</div>
-      <div className="mt-1 text-sm leading-6 text-slate-600">{detail}</div>
-    </div>
-  );
-}
-
 export default function PhoneMockupDemo() {
   const script = useMemo(
     () => [
-      { type: "msg", role: "user", time: "10:12", text: "Hi — I missed your call. Can you help me book an estimate?" },
+      { type: "msg", role: "user", time: "10:12", text: "Hi - I need solar panel cleaning at 14 Palm Ave this Thursday around 3 PM." },
+      { type: "typing", role: "assistant", ms: 1100 },
+      { type: "msg", role: "assistant", time: "10:12", text: "Absolutely. What name should I put on the appointment?" },
+      { type: "typing", role: "user", ms: 900 },
+      { type: "msg", role: "user", time: "10:13", text: "Mike Turner." },
       { type: "typing", role: "assistant", ms: 1200 },
-      {
-        type: "msg",
-        role: "assistant",
-        time: "10:12",
-        text: "Absolutely. What service do you need and what city are you in?",
-      },
-      { type: "typing", role: "user", ms: 1000 },
-      { type: "msg", role: "user", time: "10:13", text: "Water heater replacement in Palm Coast." },
-      { type: "typing", role: "assistant", ms: 1350 },
-      {
-        type: "msg",
-        role: "assistant",
-        time: "10:13",
-        text: "Got it. What’s the best time window for a call back today — morning, afternoon, or evening?",
-      },
+      { type: "msg", role: "assistant", time: "10:13", text: "Thanks, Mike. That slot is not available. I can offer Thursday at 2 PM or 4 PM. Which works better?" },
       { type: "typing", role: "user", ms: 950 },
-      { type: "msg", role: "user", time: "10:13", text: "Afternoon works." },
-      { type: "typing", role: "assistant", ms: 1400 },
-      {
-        type: "msg",
-        role: "assistant",
-        time: "10:14",
-        text: "Perfect — I’ll log this as a new lead and route it to the right tech. You’ll get a confirmation shortly.",
-      },
+      { type: "msg", role: "user", time: "10:14", text: "4 PM works." },
+      { type: "typing", role: "assistant", ms: 1300 },
+      { type: "msg", role: "assistant", time: "10:14", text: "Perfect. Your appointment is confirmed for Thursday at 4 PM." },
     ],
     []
   );
@@ -138,16 +102,20 @@ export default function PhoneMockupDemo() {
   const [typingRole, setTypingRole] = useState(null);
   const [toast, setToast] = useState(null);
   const listRef = useRef(null);
-
   const timeoutsRef = useRef([]);
 
   useEffect(() => {
     function clearAll() {
-      for (const t of timeoutsRef.current) clearTimeout(t);
+      for (const timeoutId of timeoutsRef.current) clearTimeout(timeoutId);
       timeoutsRef.current = [];
     }
 
-    async function run() {
+    function schedule(callback, delay) {
+      const id = setTimeout(callback, delay);
+      timeoutsRef.current.push(id);
+    }
+
+    function run() {
       clearAll();
       setMessages([]);
       setTypingRole(null);
@@ -155,65 +123,71 @@ export default function PhoneMockupDemo() {
 
       let cursor = 250;
 
-      const pushTimeout = (fn, ms) => {
-        const id = setTimeout(fn, ms);
-        timeoutsRef.current.push(id);
-      };
-
-      for (let i = 0; i < script.length; i++) {
-        const step = script[i];
-
+      script.forEach((step, index) => {
         if (step.type === "typing") {
-          pushTimeout(() => setTypingRole(step.role), cursor);
+          schedule(() => setTypingRole(step.role), cursor);
           cursor += step.ms;
-          pushTimeout(() => setTypingRole(null), cursor);
+          schedule(() => setTypingRole(null), cursor);
           cursor += 250;
-          continue;
+          return;
         }
 
-        if (step.type === "msg") {
-          pushTimeout(() => {
-            setMessages((prev) => [
-              ...prev,
-              { id: `${i}-${step.role}`, role: step.role, text: step.text, time: step.time },
-            ]);
-          }, cursor);
+        schedule(() => {
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: `${index}-${step.role}`,
+              role: step.role,
+              text: step.text,
+              time: step.time,
+            },
+          ]);
+        }, cursor);
 
-          if (i === 6) {
-            pushTimeout(
-              () =>
-                setToast({
-                  title: "Lead captured",
-                  detail: "Palm Coast • Water heater • Priority: High",
-                  tone: "emerald",
-                }),
-              cursor + 250
-            );
-          }
-
-          if (i === 10) {
-            pushTimeout(
-              () =>
-                setToast({
-                  title: "Booking in progress",
-                  detail: "Routing to on-call tech • Afternoon window",
-                  tone: "slate",
-                }),
-              cursor + 250
-            );
-          }
-
-          cursor += 900;
+        if (index === 4) {
+          schedule(
+            () =>
+              setToast({
+                label: "Structured lead",
+                detail: "Name, address, service, date, and time captured",
+              }),
+            cursor + 250
+          );
         }
-      }
 
-      pushTimeout(() => setToast(null), cursor + 1400);
-      pushTimeout(() => run(), cursor + 2200);
+        if (index === 8) {
+          schedule(
+            () =>
+              setToast({
+                label: "Alternative selected",
+                detail: "Thursday at 4 PM is being rechecked",
+              }),
+            cursor + 250
+          );
+        }
+
+        if (index === 10) {
+          schedule(
+            () =>
+              setToast({
+                label: "Booking confirmed",
+                detail: "Verified slot returned to the customer safely",
+              }),
+            cursor + 250
+          );
+        }
+
+        cursor += 900;
+      });
+
+      schedule(() => setToast(null), cursor + 1400);
+      schedule(() => run(), cursor + 2400);
     }
 
     run();
+
     return () => {
-      for (const t of timeoutsRef.current) clearTimeout(t);
+      for (const timeoutId of timeoutsRef.current) clearTimeout(timeoutId);
       timeoutsRef.current = [];
     };
   }, [script]);
@@ -231,8 +205,12 @@ export default function PhoneMockupDemo() {
       <PhoneFrame>
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3">
-            <div className="text-sm font-semibold text-slate-950">After-hours assistant</div>
-            <div className="text-xs font-semibold text-slate-500">Missed call → booked</div>
+            <div className="text-sm font-semibold text-slate-950">
+              After-hours booking assistant
+            </div>
+            <div className="text-xs font-semibold text-slate-500">
+              Voice intake to confirmation
+            </div>
           </div>
 
           {toast && (
@@ -240,22 +218,13 @@ export default function PhoneMockupDemo() {
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <div className="truncate text-sm font-semibold text-slate-950">
-                    {toast.title}
+                    {toast.label}
                   </div>
                   <div className="mt-0.5 text-xs font-semibold text-slate-500">
                     {toast.detail}
                   </div>
                 </div>
-                <span
-                  className={cx(
-                    "shrink-0 rounded-full border px-3 py-1 text-xs font-semibold",
-                    toast.tone === "emerald"
-                      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-                      : toast.tone === "slate"
-                        ? "border-slate-200 bg-slate-50 text-slate-700"
-                        : "border-sky-200 bg-sky-50 text-sky-700"
-                  )}
-                >
+                <span className="shrink-0 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
                   Live
                 </span>
               </div>
@@ -266,8 +235,13 @@ export default function PhoneMockupDemo() {
             ref={listRef}
             className="flex-1 space-y-4 overflow-y-auto bg-slate-50 px-4 py-4"
           >
-            {messages.map((m) => (
-              <Bubble key={m.id} role={m.role} text={m.text} time={m.time} />
+            {messages.map((message) => (
+              <Bubble
+                key={message.id}
+                role={message.role}
+                text={message.text}
+                time={message.time}
+              />
             ))}
 
             {typingRole && (
@@ -278,23 +252,10 @@ export default function PhoneMockupDemo() {
           <div className="border-t border-slate-200 bg-white px-4 py-4">
             <div className="flex items-center gap-3">
               <div className="h-10 flex-1 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-500">
-                Type a message…
+                Type a message...
               </div>
               <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-sm">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M22 2 11 13" />
-                  <path d="M22 2 15 22l-4-9-9-4Z" />
-                </svg>
+                Go
               </div>
             </div>
           </div>
@@ -303,4 +264,3 @@ export default function PhoneMockupDemo() {
     </div>
   );
 }
-

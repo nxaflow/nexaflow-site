@@ -16,7 +16,23 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The route files in `src/app` are intentionally small. The two site areas live in separate folders:
+
+- `src/sites/marketing` contains the public marketing site.
+- `src/sites/dashboard` contains the internal dashboard app.
+
+## Dashboard
+
+The internal dashboard lives at [http://localhost:3000/dashboard](http://localhost:3000/dashboard).
+
+To connect it to Supabase:
+
+1. Copy `.env.example` to `.env.local` and fill in `NEXT_PUBLIC_SUPABASE_URL` plus `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+2. Run `supabase/dashboard_schema.sql` in the Supabase SQL editor.
+3. Create Supabase Auth users for the boss/team.
+4. Start the app with `npm run dev`, open `/dashboard`, and sign in.
+
+The dashboard assistant can search clients, tasks, and appointments in natural language. It can also write availability rules, for example: `today I am busy, mark this day unavailable`.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

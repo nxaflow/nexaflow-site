@@ -11,11 +11,11 @@ export default function SiteFooter() {
               NexaFlow
             </p>
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-600 md:text-sm md:leading-relaxed">
-              AI-powered front desk automation for service businesses.
+              AI-powered intake and booking automation for service businesses.
             </p>
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-600 md:text-sm md:leading-relaxed">
-              We help companies capture leads, respond instantly, and book
-              appointments automatically.
+              We help teams handle voice intake, FAQ replies, lead capture, and
+              booking workflows with safer handoffs.
             </p>
           </div>
 
@@ -59,7 +59,7 @@ export default function SiteFooter() {
 
         <div className="mt-10 flex flex-col gap-3 text-[11px] text-slate-500 md:flex-row md:items-center md:justify-between md:text-xs">
           <p className="text-slate-600">
-            © 2026 NexaFlow. All rights reserved.
+            Copyright 2026 NexaFlow. All rights reserved.
           </p>
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <a

@@ -45,7 +45,7 @@ export default function NexaChatWidget() {
     {
       id: "welcome",
       role: "assistant",
-      text: "Hi — I can help with missed calls, booking, chat, or email automation.",
+      text: "Hi - I can show you voice intake, FAQ and RAG, booking qualification, or email front desk flows.",
     },
   ]);
 
@@ -110,17 +110,18 @@ export default function NexaChatWidget() {
         assistantText = data[0].output;
       } else {
         assistantText =
-          "The chat is connected, but the response format from n8n needs adjustment.";
+          "The chat is connected, but the response format from n8n still needs adjustment.";
       }
 
-      const assistantMessage = {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        text: assistantText,
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          text: assistantText,
+        },
+      ]);
+    } catch (_error) {
       setMessages((prev) => [
         ...prev,
         {
@@ -134,9 +135,9 @@ export default function NexaChatWidget() {
     }
   }
 
-  function handleKeyDown(e) {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
+  function handleKeyDown(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
       sendMessage();
     }
   }
@@ -149,17 +150,17 @@ export default function NexaChatWidget() {
             <div className="mt-1 h-3 w-3 rounded-full bg-emerald-500 shadow-[0_0_0_6px_rgba(16,185,129,0.12)]" />
             <div className="min-w-0">
               <p className="text-[15px] font-semibold text-slate-900">
-                Still missing calls?
+                Still juggling intake by hand?
               </p>
               <p className="mt-1 text-sm leading-6 text-slate-500">
-                I can show you how this works in 30 seconds.
+                Ask about voice booking, FAQ replies, or multi-channel handoff.
               </p>
             </div>
             <button
               onClick={() => setShowHint(false)}
               className="text-slate-400 hover:text-slate-600"
             >
-              ✕
+              x
             </button>
           </div>
         </div>
@@ -167,7 +168,7 @@ export default function NexaChatWidget() {
 
       <button
         onClick={() => {
-          setOpen((v) => !v);
+          setOpen((value) => !value);
           setShowHint(false);
         }}
         className="fixed bottom-6 right-6 z-[9999] flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600 text-white shadow-[0_20px_45px_rgba(16,185,129,0.32)] transition hover:scale-[1.03] hover:bg-emerald-700"
@@ -207,12 +208,13 @@ export default function NexaChatWidget() {
                 onClick={() => setOpen(false)}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50"
               >
-                ✕
+                x
               </button>
             </div>
 
             <p className="mt-3 text-sm leading-6 text-slate-500">
-              Ask about missed calls, booking, chat, or email automation.
+              Ask about voice intake, booking logic, FAQ handling, or email
+              workflows.
             </p>
           </div>
 
@@ -220,8 +222,12 @@ export default function NexaChatWidget() {
             ref={listRef}
             className="flex-1 space-y-4 overflow-y-auto bg-slate-50 px-4 py-4"
           >
-            {messages.map((msg) => (
-              <MessageBubble key={msg.id} role={msg.role} text={msg.text} />
+            {messages.map((message) => (
+              <MessageBubble
+                key={message.id}
+                role={message.role}
+                text={message.text}
+              />
             ))}
 
             {loading && <TypingDots />}
@@ -231,7 +237,7 @@ export default function NexaChatWidget() {
             <div className="flex items-end gap-3">
               <textarea
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(event) => setInput(event.target.value)}
                 onKeyDown={handleKeyDown}
                 rows={1}
                 placeholder="Type your message..."
@@ -242,7 +248,7 @@ export default function NexaChatWidget() {
                 disabled={loading || !input.trim()}
                 className="flex h-[52px] w-[52px] items-center justify-center rounded-2xl bg-emerald-600 text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                ➤
+                Send
               </button>
             </div>
           </div>
