@@ -11,7 +11,7 @@ export default function SiteFooter() {
               NexaFlow
             </p>
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-600 md:text-sm md:leading-relaxed">
-              AI-powered intake and booking automation for service businesses.
+              NexaFlow helps service teams capture leads, answer routine questions, and book jobs without adding more phone coverage.
             </p>
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-600 md:text-sm md:leading-relaxed">
               We help teams capture new requests, answer common questions, and

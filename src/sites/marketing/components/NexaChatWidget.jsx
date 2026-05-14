@@ -45,7 +45,7 @@ export default function NexaChatWidget() {
     {
       id: "welcome",
       role: "assistant",
-      text: "Hi - I can show you how NexaFlow captures new requests, answers common questions, and moves customers toward a confirmed appointment.",
+      text: "Hi - ask how NexaFlow handles after-hours calls, scheduling conflicts, or website leads.",
     },
   ]);
 
@@ -110,7 +110,7 @@ export default function NexaChatWidget() {
         assistantText = data[0].output;
       } else {
         assistantText =
-          "Thanks for your message. We can show you how this would be handled in a live demo.";
+          "I can still explain how NexaFlow handles lead capture, rescheduling, and after-hours requests. What would you like to see?";
       }
 
       setMessages((prev) => [
@@ -127,7 +127,7 @@ export default function NexaChatWidget() {
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          text: "Thanks for reaching out. We can walk you through this flow in a live demo.",
+          text: "I can still explain how NexaFlow handles lead capture, rescheduling, and after-hours requests. What would you like to see?",
         },
       ]);
     } finally {
@@ -153,7 +153,7 @@ export default function NexaChatWidget() {
                 Still juggling intake by hand?
               </p>
               <p className="mt-1 text-sm leading-6 text-slate-500">
-                Ask about booking requests, customer questions, or after-hours coverage.
+                Ask how NexaFlow handles after-hours calls, scheduling conflicts, or website leads.
               </p>
             </div>
             <button
@@ -213,8 +213,7 @@ export default function NexaChatWidget() {
             </div>
 
             <p className="mt-3 text-sm leading-6 text-slate-500">
-              Ask about booking requests, customer questions, or how the system
-              handles follow-through.
+              What workflow do you want to see first?
             </p>
           </div>
 

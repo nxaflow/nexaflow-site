@@ -47,7 +47,7 @@ export default function DemoRequestForm() {
             name="company"
             autoComplete="organization"
             className="mt-2 w-full rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
-            placeholder="Service business"
+            placeholder="Company name"
           />
         </label>
       </div>
@@ -68,7 +68,7 @@ export default function DemoRequestForm() {
 
       <label className="block">
         <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-          What do you want NexaFlow to handle first?
+          What should we automate first?
         </div>
         <textarea
           name="notes"
@@ -82,7 +82,7 @@ export default function DemoRequestForm() {
         type="submit"
         className="inline-flex w-full items-center justify-center rounded-2xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_55px_-35px_rgba(16,185,129,0.95)] transition hover:-translate-y-0.5 hover:bg-emerald-700"
       >
-        {submitted ? "Request received" : "Request demo"}
+        {submitted ? "Request received" : "Book your demo"}
       </button>
 
       {submitted ? (
@@ -91,7 +91,7 @@ export default function DemoRequestForm() {
         </div>
       ) : (
         <div className="text-xs text-slate-500">
-          No spam. Professional follow-up only.
+          We&apos;ll only use this to follow up about your demo.
         </div>
       )}
     </form>

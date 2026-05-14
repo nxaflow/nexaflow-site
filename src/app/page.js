@@ -266,21 +266,21 @@ function SectionHeading({ title, description }) {
 
 const problemCards = [
   {
-    badge: "Phone intake",
-    title: "Calls turn into real booking-ready requests",
-    text: "The system captures name, address, service, date, and time from a conversation so the team is not relying on scraps of notes.",
+    badge: "Time saver",
+    title: "No one has to sit on the phone all day",
+    text: "The system can handle routine booking conversations for you, collect the needed details, and free up the team for real work.",
     icon: IconPhone,
   },
   {
-    badge: "Structured capture",
-    title: "Customer details stay organized from the start",
-    text: "Partial details are saved as the conversation unfolds so the team keeps context instead of piecing things together later.",
+    badge: "Follow-through",
+    title: "Requests can keep moving without manual chasing",
+    text: "Once the customer shares the basics, the flow can keep the conversation going, check the requested time, and return the next step or a confirmed slot when the schedule allows.",
     icon: IconDatabase,
   },
   {
-    badge: "Booking qualification",
-    title: "The next missing field is asked on purpose",
-    text: "Before booking, NexaFlow checks if the request is complete and asks exactly for the next required detail.",
+    badge: "Less back-and-forth",
+    title: "Customers are guided instead of bounced around",
+    text: "If details are missing or the requested time is unavailable, the system asks the right next question and offers the next valid option.",
     icon: IconFlow,
   },
 ];
@@ -288,46 +288,46 @@ const problemCards = [
 const engineCards = [
   {
     title: "Availability check",
-    text: "Core Booking checks the requested slot instead of pretending availability is known.",
+    text: "Checks the requested slot against real availability before offering it.",
   },
   {
     title: "Alternative slots",
-    text: "If a time is busy, the flow can return alternate options and safely process the customer's selection.",
+    text: "If a slot is taken, it offers valid alternatives and keeps the booking moving.",
   },
 ];
 
 const capabilityCards = [
   {
-    title: "Captures new requests clearly",
+    title: "Captures complete request details",
     text: "Collects customer name, address, service, preferred day, and preferred time so the team starts with usable details.",
   },
   {
-    title: "Asks the next missing question",
-    text: "Moves the conversation forward one step at a time instead of dumping the customer into a messy back-and-forth.",
+    title: "Asks for the next required detail",
+    text: "Moves the conversation forward one step at a time while reducing back-and-forth.",
   },
   {
-    title: "Checks availability before promising anything",
-    text: "Requested times are checked before an appointment is treated like a real booking.",
+    title: "Checks availability before confirming",
+    text: "Requested times are checked before anything is treated like a confirmed appointment.",
   },
   {
-    title: "Offers alternate times when needed",
+    title: "Offers the next open slot",
     text: "If the first slot is unavailable, the customer can be guided toward the next valid option.",
   },
   {
-    title: "Confirms appointments only when verified",
+    title: "Confirms only bookable appointments",
     text: "A request is not treated as booked until the system has a real confirmed outcome.",
   },
   {
-    title: "Answers common service questions",
+    title: "Answers routine pre-booking questions",
     text: "Routine questions can be handled without derailing the request or losing the path toward a scheduled job.",
   },
   {
-    title: "Escalates sensitive issues to a person",
+    title: "Routes sensitive issues to staff",
     text: "Refunds, legal concerns, owner requests, and similar edge cases can be routed to a human instead of improvised.",
   },
   {
-    title: "Falls back safely when confidence is low",
-    text: "If the system should not continue, it can capture the lead for follow-up instead of making something up.",
+    title: "Captures leads when a rep should step in",
+    text: "If the request needs staff review, the system can capture the lead for follow-up instead of guessing.",
   },
 ];
 
@@ -402,7 +402,7 @@ const safeguardCards = [
     tone: "emerald",
   },
   {
-    tag: "Boss review",
+    tag: "Manager approval",
     title: "Unknown question queued for approval",
     text: "New answers can be approved once and reused later so customer replies stay more consistent over time.",
     icon: IconInbox,
@@ -512,25 +512,25 @@ export default function Home() {
             <div>
               <SectionKicker
                 hero
-                text="Live now - voice, chat, and booking orchestration"
+                text="Built for service businesses"
               />
 
               <h1 className="mt-5 max-w-3xl text-5xl font-black leading-tight tracking-tight md:text-7xl">
-                <span className="text-white">AI Intake That</span>
+                <span className="text-white">Turn calls and chats</span>
                 <br />
                 <span className="text-[#10b981]">
-                  Actually Gets The Booking Done.
+                  into booked jobs.
                 </span>
               </h1>
 
               <h2 className="mt-4 text-2xl font-semibold text-[#cbd5f5] md:text-4xl">
-                Calls, chat, and scheduling working together.
+                Capture the details, check availability, and keep requests moving without tying up your team.
               </h2>
 
               <p className="mt-4 max-w-2xl text-lg leading-8 text-[#94a3b8]">
-                NexaFlow captures lead details, qualifies the request, checks
-                availability, offers alternate slots, and returns customer-safe
-                replies across the customer touchpoints you already manage.
+                For service businesses that need faster response times without
+                missed details, scheduling chaos, or someone sitting on the
+                phone all day.
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">
@@ -549,9 +549,9 @@ export default function Home() {
 
                 <div className="flex flex-wrap items-center gap-2 text-sm text-[#94a3b8]">
                   {[
-                    { label: "Calls + chat", tone: "emerald" },
-                    { label: "Booking engine", tone: "slate" },
-                    { label: "Customer-safe answers", tone: "sky" },
+                    { label: "More booked jobs", tone: "emerald" },
+                    { label: "Fewer interruptions", tone: "slate" },
+                    { label: "Cleaner scheduling", tone: "sky" },
                   ].map((chip) => (
                     <span
                       key={chip.label}
@@ -581,8 +581,7 @@ export default function Home() {
               </div>
 
               <p className="mt-4 text-sm text-[#94a3b8]">
-                Built for service businesses that need structured intake and
-                safer automation.
+                Built to save staff time while keeping more requests on track.
               </p>
             </div>
 
@@ -647,8 +646,8 @@ export default function Home() {
         <section id="problem" className="relative mx-auto max-w-7xl px-6 pb-16 pt-6">
           <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
             <SectionHeading
-              title="Most teams do not need another chatbot"
-              description="They need an intake layer that captures real booking details, asks the next missing question, and moves qualified requests toward a real outcome."
+              title="Booking requests get stuck when no one can answer right away"
+              description="Missed calls, incomplete details, and scheduling back-and-forth cost time and jobs. NexaFlow keeps requests moving without making your team sit on the phone all day."
             />
 
             <div className="mt-2 flex items-start md:mt-0">
@@ -657,16 +656,17 @@ export default function Home() {
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-[0_18px_40px_-18px_rgba(16,185,129,0.65)]">
                     <IconFlow className="h-5 w-5" />
                   </div>
-                  <div>
-                    <div className="text-sm font-semibold text-slate-950">
-                      Real intake, not surface-level replies
-                    </div>
-                    <div className="mt-1 text-sm leading-6 text-slate-600">
-                      Structured lead capture, booking qualification, and safer
-                      follow-through across channels.
+                    <div>
+                      <div className="text-sm font-semibold text-slate-950">
+                      Built to remove routine booking work
+                      </div>
+                      <div className="mt-1 text-sm leading-6 text-slate-600">
+                      Less time answering the same questions, less manual
+                      back-and-forth, and more requests moving toward a booked
+                      job.
+                      </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
@@ -699,21 +699,21 @@ export default function Home() {
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {[
               {
-                label: "Key details captured",
-                value: "Name, service, address",
-                sub: "No messy notes or missing basics",
+                label: "Saves team time",
+                value: "Fewer phone interruptions",
+                sub: "Routine booking conversations can be handled automatically",
                 barClass: "bg-gradient-to-r from-emerald-500 to-emerald-300/40",
               },
               {
-                label: "Next step stays clear",
-                value: "One question at a time",
-                sub: "The customer is guided forward deliberately",
+                label: "Keeps requests moving",
+                value: "Clear next steps",
+                sub: "Every request keeps moving toward an outcome",
                 barClass: "bg-gradient-to-r from-sky-500 to-sky-300/40",
               },
               {
-                label: "Schedule stays grounded",
-                value: "Checks and alternatives",
-                sub: "Availability is verified before anything is promised",
+                label: "Protects the schedule",
+                value: "Availability checked first",
+                sub: "Availability and alternatives stay grounded in real rules",
                 barClass: "bg-gradient-to-r from-indigo-500 to-indigo-300/40",
               },
             ].map((metric) => (
@@ -755,13 +755,12 @@ export default function Home() {
                     Booking engine
                   </div>
                   <h3 className="mt-4 text-2xl font-bold tracking-tight text-slate-950">
-                    Not just answers - a booking engine
+                    Turns inquiries into booked jobs
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-slate-600">
-                    NexaFlow does more than reply. It captures the lead,
-                    qualifies the request, checks availability, suggests
-                    alternatives, and only confirms when the booking path is
-                    actually verified.
+                    NexaFlow captures the lead, qualifies the job, checks real
+                    availability, offers valid alternatives, and confirms only
+                    bookable appointments.
                   </p>
                 </div>
                 <div className="hidden h-12 w-12 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-sm sm:flex">
@@ -787,12 +786,12 @@ export default function Home() {
 
               <div className="mt-7 rounded-3xl border border-slate-100 bg-slate-50/90 p-5">
                 <div className="text-sm font-semibold text-slate-950">
-                  Deterministic booking outcomes
+                  Every inquiry ends in a usable next step
                 </div>
                 <div className="mt-2 text-sm leading-6 text-slate-600">
-                  The flow can move a lead into needs-more-info, booked,
-                  unavailable-with-alternatives, cancelled, escalated, or
-                  safe-fallback states without forcing a free-form answer.
+                  Each request ends in a clear outcome: confirm the job, offer
+                  another time, ask for missing details, route to staff, or
+                  queue follow-up.
                 </div>
               </div>
             </div>
@@ -805,35 +804,52 @@ export default function Home() {
               <div className="relative">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80">
                   <IconSpark className="h-4 w-4" />
-                  Deterministic safety layer
+                  Scheduling guardrails
                 </div>
                 <h3 className="mt-4 text-2xl font-bold tracking-tight text-white">
-                  Business rules keep automation honest
+                  Only promise what your schedule can support
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-white/70">
-                  NexaFlow does not just push everything toward a booking. It
-                  respects working hours, closed days, holidays, date
-                  overrides, minimum notice, service duration, and
-                  buffer-aware late starts.
+                  Bookings follow your operating rules before anything is
+                  confirmed: hours, notice windows, job length, buffers, and
+                  human-review triggers.
                 </p>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2">
                   <div className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/[0.08]">
                     <div className="text-sm font-semibold text-white">
-                      Business-hour logic
+                      Working hours and closed days
                     </div>
                     <div className="mt-1 text-sm leading-6 text-white/70">
-                      Requests outside the allowed window are blocked with a
-                      clear customer-safe reply.
+                      Blocks requests outside working hours, closed days, and
+                      blocked windows before they become bad bookings.
                     </div>
                   </div>
                   <div className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/[0.08]">
                     <div className="text-sm font-semibold text-white">
-                      Safe handoff
+                      Holidays and date overrides
                     </div>
                     <div className="mt-1 text-sm leading-6 text-white/70">
-                      Sensitive requests can move to a human instead of being
-                      forced through an unsafe automation path.
+                      Applies holiday closures, blackout dates, and one-off
+                      schedule exceptions automatically.
+                    </div>
+                  </div>
+                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/[0.08]">
+                    <div className="text-sm font-semibold text-white">
+                      Minimum notice and job length
+                    </div>
+                    <div className="mt-1 text-sm leading-6 text-white/70">
+                      Rejects same-day or short-notice requests that miss your
+                      notice window.
+                    </div>
+                  </div>
+                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:bg-white/[0.08]">
+                    <div className="text-sm font-semibold text-white">
+                      Buffers and late-start protection
+                    </div>
+                    <div className="mt-1 text-sm leading-6 text-white/70">
+                      Checks job length, buffers, and late-start cutoffs before
+                      offering a slot.
                     </div>
                   </div>
                 </div>
@@ -845,11 +861,11 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-white">
-                        Real guardrails, not just polished copy
+                        Human review when it should not stay automated
                       </div>
                       <div className="mt-1 text-sm leading-6 text-white/70">
-                        This is the layer that makes the booking flow more
-                        usable in a real service business.
+                        Escalates sensitive or high-risk requests to staff
+                        instead of forcing a bad automated answer.
                       </div>
                     </div>
                   </div>
@@ -865,8 +881,8 @@ export default function Home() {
           <div className="rounded-[36px] border border-slate-100 bg-white/70 p-8 shadow-sm backdrop-blur">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
               <SectionHeading
-                title="What NexaFlow can actually handle"
-                description="This is the real functional layer behind the site. It is built to help service businesses capture demand, guide the conversation, and move more jobs toward a confirmed outcome."
+                title="What NexaFlow handles for your team"
+                description="Capture qualified requests, check availability, and move more inquiries toward confirmed jobs."
               />
               <div className="rounded-3xl border border-emerald-100 bg-emerald-50/70 px-5 py-4 text-sm font-semibold text-emerald-800">
                 Built for real inquiries, not just polished replies
@@ -908,9 +924,9 @@ export default function Home() {
                 title="A cleaner handoff for your team"
                 description={
                   <>
-                    <p>Every conversation becomes a clear request your team can understand fast.</p>
-                    <p>Instead of piecing together half-complete notes, your team sees the service, timing, customer details, and the next step in one place.</p>
-                    <p>That means fewer messy handoffs, less manual cleanup, and less guesswork about what the customer actually needs.</p>
+                    <p>Every inquiry arrives with the customer details, service need, timing, and next step already organized for your team.</p>
+                    <p>Instead of piecing together half-complete notes, your team can review the request and act quickly.</p>
+                    <p>That means faster follow-up, less manual cleanup, and fewer details slipping through the cracks.</p>
                   </>
                 }
               />
@@ -921,31 +937,31 @@ export default function Home() {
                     Handoff
                   </div>
                   <div className="mt-2 text-2xl font-bold text-slate-950">
-                    Clear
+                    Ready to act
                   </div>
                   <div className="mt-1 text-sm text-slate-600">
-                    The team sees what matters right away
+                    Your team sees the request, timing, and next step at a glance
                   </div>
                 </div>
 
                 <div className="rounded-3xl border border-slate-100 bg-white/70 p-5 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_-45px_rgba(15,23,42,0.5)]">
                   <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Consistency
+                    Records
                   </div>
                   <div className="mt-2 text-2xl font-bold text-slate-950">
-                    Consistent
+                    Standardized
                   </div>
                   <div className="mt-1 text-sm text-slate-600">
-                    The same useful details each time
+                    Every inquiry follows the same intake format
                   </div>
                 </div>
               </div>
 
               <div className="mt-4 inline-flex flex-wrap items-center gap-2">
                 {[
-                  "Customer details",
-                  "Service request",
-                  "Timing",
+                  "Customer",
+                  "Service",
+                  "Requested time",
                   "Next action",
                 ].map((chip) => (
                   <span
@@ -973,7 +989,7 @@ export default function Home() {
               <div className="flex items-center justify-between gap-4 rounded-3xl border border-slate-100 bg-white/70 px-5 py-4">
                 <div>
                   <div className="text-sm font-semibold text-slate-950">
-                    Structured lead record
+                    Lead record
                   </div>
                   <div className="mt-1 text-sm text-slate-600">
                     Key details, request type, and the next step your team can take.
@@ -988,7 +1004,7 @@ export default function Home() {
               <div className="mt-4 rounded-2xl border border-slate-100 bg-white/70 px-4 py-3">
                 <div className="nf-dashboard-shimmer h-2 w-full rounded-full" />
                 <div className="mt-2 flex items-center justify-between text-xs font-semibold text-slate-500">
-                  <span>Request clarity</span>
+                  <span>Intake completeness</span>
                   <span>Updated just now</span>
                 </div>
               </div>
@@ -1011,7 +1027,7 @@ export default function Home() {
                         {row.name}
                       </div>
                       <div className="mt-0.5 text-xs font-semibold text-slate-500">
-                        Structured and timestamped
+                        Captured automatically
                       </div>
                     </div>
                     <div className="col-span-4 min-w-0">
@@ -1056,9 +1072,9 @@ export default function Home() {
               <div className="mt-5 grid gap-4 sm:grid-cols-3">
                 {[
                   {
-                    title: "Lead quality",
-                    value: "Structured",
-                    note: "Cleaner ops handoffs",
+                    title: "Follow-up speed",
+                    value: "Faster",
+                    note: "Less cleanup before the team responds",
                   },
                   {
                     title: "Status clarity",
@@ -1066,9 +1082,9 @@ export default function Home() {
                     note: "Clear next step for each request",
                   },
                   {
-                    title: "Team clarity",
-                    value: "Faster",
-                    note: "Less cleanup before follow-up",
+                    title: "Manual cleanup",
+                    value: "Lower",
+                    note: "Less guessing about what the customer needs",
                   },
                 ].map((kpi) => (
                   <div
@@ -1145,7 +1161,7 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-slate-950">
-                        One orchestration layer
+                        One workflow across every channel
                       </div>
                       <div className="mt-1 text-sm leading-6 text-slate-600">
                         Every touchpoint can share one playbook for lead
@@ -1179,8 +1195,8 @@ export default function Home() {
         <section id="safeguards" className="relative mx-auto max-w-7xl px-6 pb-16 pt-0">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <SectionHeading
-              title="Safeguards that keep automation usable"
-              description="Controlled knowledge, human escalation, and safe fallbacks matter as much as speed."
+              title="Guardrails that keep AI from overpromising"
+              description="The system can answer routine questions, check the schedule, and route edge cases to a person instead of guessing."
             />
 
             <div className="relative overflow-hidden rounded-[32px] border border-slate-900 bg-[linear-gradient(135deg,#0F172A,#1E293B,#0B3B2E)] p-8 shadow-[0_40px_120px_-70px_rgba(2,6,23,0.85)]">
@@ -1188,16 +1204,16 @@ export default function Home() {
                 aria-hidden="true"
                 className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.22),transparent_55%),radial-gradient(circle_at_right,rgba(59,130,246,0.18),transparent_55%)]"
               />
-              <div className="relative flex items-center justify-between gap-6">
-                <div>
-                  <div className="text-sm font-semibold text-white">
-                    NexaFlow safeguard layer
+                <div className="relative flex items-center justify-between gap-6">
+                  <div>
+                    <div className="text-sm font-semibold text-white">
+                      Guardrails built into the workflow
+                    </div>
+                    <div className="mt-1 text-sm text-white/70">
+                      What happens when the system should answer, pause, or send
+                      the request to staff.
+                    </div>
                   </div>
-                  <div className="mt-1 text-sm text-white/70">
-                    What happens when the system should answer, pause, or
-                    escalate.
-                  </div>
-                </div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white shadow-sm ring-1 ring-white/10">
                   <IconShield className="h-5 w-5" />
                 </div>
@@ -1205,7 +1221,7 @@ export default function Home() {
 
               <div className="relative mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5">
                 <div className="border-b border-white/10 bg-white/5 px-5 py-3 text-xs font-semibold text-white/70">
-                  Customer-safe outcomes
+                  How the system stays under control
                 </div>
                 <div className="space-y-4 px-5 py-5">
                   {safeguardCards.map((item) => (
@@ -1256,15 +1272,15 @@ export default function Home() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-white ring-1 ring-white/10">
                     <IconCheckCircle className="h-5 w-5" />
                   </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">
-                      Safe mode and safe capture
-                    </div>
-                    <p className="mt-1 text-sm leading-6 text-white/70">
-                      If the system should not continue, it can return a
-                      customer-safe fallback or capture name, phone, and issue
-                      for follow-up instead of guessing.
-                    </p>
+                    <div>
+                      <div className="text-sm font-semibold text-white">
+                        Fallback when a person should step in
+                      </div>
+                      <p className="mt-1 text-sm leading-6 text-white/70">
+                        If the request should not stay automated, the system can
+                        collect the lead and hand it off cleanly instead of
+                        guessing.
+                      </p>
                     <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-white/50">
                       Optional notifications can support ops handoff.
                     </p>
@@ -1292,10 +1308,9 @@ export default function Home() {
                 title="Built for service businesses that need controlled automation"
                 description={
                   <>
-                    <p>NexaFlow is designed for teams that need more than fast replies. They need structured intake, safer automation, and booking logic that respects real business constraints.</p>
-                    <p>This is why the product leans into qualification, availability checks, alternate-slot handling, customer-safe answers, and human escalation instead of pretending every request should be answered free-form.</p>
-                    <p>The result is an intake layer that can help service businesses respond faster while keeping more control over what gets promised, booked, escalated, or saved for follow-up.</p>
-                    <p>That is the differentiator: not just AI that talks, but AI orchestration that can support real operations.</p>
+                    <p>NexaFlow helps service teams qualify leads, check availability, and book the next step automatically.</p>
+                    <p>When a request needs approval or a human answer, it routes cleanly instead of guessing.</p>
+                    <p>The result is faster response times, cleaner handoffs, and more control over what gets promised to the customer.</p>
                   </>
                 }
               />
@@ -1431,12 +1446,11 @@ export default function Home() {
                 </div>
 
                 <h2 className="mt-5 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
-                  Put intake, scheduling, and customer follow-through in one system
+                  Turn calls, chats, and web leads into booked jobs
                 </h2>
                 <p className="mt-4 text-lg leading-8 text-slate-600">
-                  Book a demo and see how NexaFlow handles structured intake,
-                  booking qualification, availability checks, customer-safe
-                  answers, and safe handoffs for service businesses.
+                  Book a demo and see how NexaFlow captures requests, checks
+                  availability, and hands off edge cases safely.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -1455,7 +1469,7 @@ export default function Home() {
                 </div>
 
                 <p className="mt-4 text-sm text-slate-500">
-                  Built for managed rollouts, not vague AI promises.
+                  Built for real schedules, approvals, and handoffs.
                 </p>
               </div>
 
