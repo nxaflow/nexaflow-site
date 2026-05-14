@@ -14,7 +14,7 @@ export default function DemoRequestForm() {
       }}
     >
       <div className="flex flex-wrap items-center gap-2">
-        {["Voice + chat", "FAQ + RAG", "Booking engine"].map((chip) => (
+        {["Calls + chat", "Customer questions", "Booking engine"].map((chip) => (
           <span
             key={chip}
             className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-600"
@@ -74,7 +74,7 @@ export default function DemoRequestForm() {
           name="notes"
           rows={3}
           className="mt-2 w-full resize-none rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
-          placeholder="Voice booking, FAQ replies, email front desk, website chat..."
+          placeholder="Booking requests, customer questions, after-hours calls..."
         />
       </label>
 

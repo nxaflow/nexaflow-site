@@ -148,8 +148,8 @@ export default function PhoneMockupDemo() {
           schedule(
             () =>
               setToast({
-                label: "Structured lead",
-                detail: "Name, address, service, date, and time captured",
+                label: "Customer details captured",
+                detail: "The request is clear enough to keep moving forward",
               }),
             cursor + 250
           );
@@ -159,8 +159,8 @@ export default function PhoneMockupDemo() {
           schedule(
             () =>
               setToast({
-                label: "Alternative selected",
-                detail: "Thursday at 4 PM is being rechecked",
+                label: "A better time was selected",
+                detail: "The new appointment option is being confirmed",
               }),
             cursor + 250
           );
@@ -170,8 +170,8 @@ export default function PhoneMockupDemo() {
           schedule(
             () =>
               setToast({
-                label: "Booking confirmed",
-                detail: "Verified slot returned to the customer safely",
+                label: "Appointment confirmed",
+                detail: "The customer received a clear confirmed time",
               }),
             cursor + 250
           );

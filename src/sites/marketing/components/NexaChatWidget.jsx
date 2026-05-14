@@ -45,7 +45,7 @@ export default function NexaChatWidget() {
     {
       id: "welcome",
       role: "assistant",
-      text: "Hi - I can show you voice intake, FAQ and RAG, booking qualification, or email front desk flows.",
+      text: "Hi - I can show you how NexaFlow captures new requests, answers common questions, and moves customers toward a confirmed appointment.",
     },
   ]);
 
@@ -110,7 +110,7 @@ export default function NexaChatWidget() {
         assistantText = data[0].output;
       } else {
         assistantText =
-          "The chat is connected, but the response format from n8n still needs adjustment.";
+          "Thanks for your message. We can show you how this would be handled in a live demo.";
       }
 
       setMessages((prev) => [
@@ -127,7 +127,7 @@ export default function NexaChatWidget() {
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          text: "Request failed. Check the webhook, workflow status, or browser console.",
+          text: "Thanks for reaching out. We can walk you through this flow in a live demo.",
         },
       ]);
     } finally {
@@ -153,7 +153,7 @@ export default function NexaChatWidget() {
                 Still juggling intake by hand?
               </p>
               <p className="mt-1 text-sm leading-6 text-slate-500">
-                Ask about voice booking, FAQ replies, or multi-channel handoff.
+                Ask about booking requests, customer questions, or after-hours coverage.
               </p>
             </div>
             <button
@@ -213,8 +213,8 @@ export default function NexaChatWidget() {
             </div>
 
             <p className="mt-3 text-sm leading-6 text-slate-500">
-              Ask about voice intake, booking logic, FAQ handling, or email
-              workflows.
+              Ask about booking requests, customer questions, or how the system
+              handles follow-through.
             </p>
           </div>
 

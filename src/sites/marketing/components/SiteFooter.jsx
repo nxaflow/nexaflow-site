@@ -14,8 +14,8 @@ export default function SiteFooter() {
               AI-powered intake and booking automation for service businesses.
             </p>
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-600 md:text-sm md:leading-relaxed">
-              We help teams handle voice intake, FAQ replies, lead capture, and
-              booking workflows with safer handoffs.
+              We help teams capture new requests, answer common questions, and
+              move more jobs toward confirmed appointments.
             </p>
           </div>
 
